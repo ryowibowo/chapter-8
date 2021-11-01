@@ -1,0 +1,612 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Binar Academy Bootcamp challenge chapter 8",
+        "version": "1.0.0",
+        "title": "api-binar-challenge-fsw-ch-8",
+        "termsOfService": "https://websitekamu/linkKeTermOfService",
+        "contact": {
+            "email": "kamu@mail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Player",
+            "description": "Player Resources"
+        }
+    ],
+    "securityDefinitions": {
+        "Token": {
+            "type": "apiKey",
+            "in": "header",
+            "name": "Authorization"
+        }
+    },
+
+    "paths": {
+        "/players": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Login player",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Player Object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "almas689"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "almas@gmail.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "123"
+                                },
+                                "exp": {
+                                    "type": "integer",
+                                    "example": "32"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Success",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SCCESS"
+                                },
+                                "message": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "username": {
+                                                "type": "string",
+                                                "example": "almas689"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "almas@gmail.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123"
+                                            },
+                                            "experiance": {
+                                                "type": "integer",
+                                                "example": "0"
+                                            },
+                                            "lvl": {
+                                                "type": "integer",
+                                                "example": "0"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "username or email or password field cannot be empty."
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while creating the Player"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "List all player",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "query",
+                        "description": "search by username player",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "search by email",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "experience",
+                        "in": "query",
+                        "description": "search by experience",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "lvl",
+                        "in": "query",
+                        "description": "search by lvl",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "username": {
+                                                "type": "string",
+                                                "example": "almas689"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "almas@gmail.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123"
+                                            },
+                                            "experiance": {
+                                                "type": "integer",
+                                                "example": "0"
+                                            },
+                                            "lvl": {
+                                                "type": "integer",
+                                                "example": "0"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "Some error occurred while creating the Player"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/players/{id}": {
+            "get": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Find player by id",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of player",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "integer",
+                                                "example": "1"
+                                            },
+                                            "username": {
+                                                "type": "string",
+                                                "example": "almas689"
+                                            },
+                                            "email": {
+                                                "type": "string",
+                                                "example": "almas@gmail.com"
+                                            },
+                                            "password": {
+                                                "type": "string",
+                                                "example": "123"
+                                            },
+                                            "experiance": {
+                                                "type": "integer",
+                                                "example": "0"
+                                            },
+                                            "lvl": {
+                                                "type": "integer",
+                                                "example": "0"
+                                            },
+                                            "craterdAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            },
+                                            "updatedAt": {
+                                                "type": "string",
+                                                "example": "2021-10-27T13:00:39.286Z"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Error retrieving Player with id=1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Update player",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of player",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Player Object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "username": {
+                                    "type": "string",
+                                    "example": "almas689"
+                                },
+                                "email": {
+                                    "type": "string",
+                                    "example": "almas@gmail.com"
+                                },
+                                "password": {
+                                    "type": "string",
+                                    "example": "123"
+                                },
+                                "exp": {
+                                    "type": "integer",
+                                    "example": "32"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Player was updated successfully."
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Cannot update Player with id=1. Maybe Player was not found or req.body is empty!"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Error updating Player with id=1"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Delete player",
+                "description": "",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of player",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Player was deleted successfully!"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Cannot delete Player with id=1. Maybe Player was not found!"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Could not delete Player with id=1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/players/exp/{id}": {
+            "post": {
+                "tags": [
+                    "Player"
+                ],
+                "summary": "Add player experiance",
+                "description": "",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Player Object",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "exp": {
+                                    "type": "integer",
+                                    "example": "32"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of player",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Succes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "SUCCESS"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Player with id=1 has more experience."
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Cannot update Player with id=1!"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Failed",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "result": {
+                                    "type": "string",
+                                    "example": "FAILED"
+                                },
+                                "message": {
+                                    "type": "string",
+                                    "example": "Error updating Player exp with id=1"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
